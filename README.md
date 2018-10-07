@@ -14,15 +14,15 @@ all of which are part of the Anaconda framework.
 
 # Results
 
-* How many movies are rated adult?
+* How many movies are rated adult?  
 	 9 movies are rated as adult.
- * How many movies are listed as animation?
+ * How many movies are listed as animation?  
 	 1934 movies are listed as animation. E.g. "The SpongeBob Movie: Sponge Out of Water" 
- * Which movie had the highest budget?
+ * Which movie had the highest budget?  
 	"Revolutionary Girl Utena: The Movie" has had the highest budget.
- * Which danish movie is most popular?
+ * Which danish movie is most popular?  
 	"Images of a Relief" is the most popular danish movie!
- * Which english action movie had the biggest revenue"
+ * Which english action movie had the biggest revenue"  
 	"Avatar" has had the biggest revenue so far
 
 # Output
