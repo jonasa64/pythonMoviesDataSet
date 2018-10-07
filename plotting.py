@@ -32,17 +32,20 @@ def runtime_releasedate(df):
     '''
 
     df = df[df['release_date'].notnull()]
+    df = df[df['runtime'].notnull()]
 
-    df_x = df['runtime']
-    df_y = df['release_date']
+    df_x = df['release_date'].tolist()
+    df_y = df['runtime'].tolist()
 
-    data_x = range(0, len(df_x))
-    data_y = range(0, len(df_y))
+    df_x = [x.split("-")[2] + "/" + x.split("-")[1] for x in df_x]
 
-    x = np.array([data_x])
-    y = np.array([data_y])
+    plt.xlabel("Relase date")
+    plt.ylabel("Runtime")
 
-    plt.ylabel("Relase date")
-    plt.xlabel("Runtime")
+    df_x = [pd.to_datetime(d, format='%d/%M') for d in df_x]
+    plt.xticks(rotation=90)
 
-    return plt.scatter(x, y)
+    df_y = [float(i) for i in df_y]
+    plt.yticks(np.arange(0, max(df_y), step=35.0))
+
+    return plt.scatter(df_x, df_y, 1)

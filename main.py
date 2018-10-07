@@ -73,5 +73,5 @@ if __name__ == '__main__':
     print("\t * Which english action movie had the biggest revenue?")
     print('\n\t\t"' + analyze.revenue(dataframe,'Action','en')['title'].iloc[-1] + '"', "has had the biggest revenue so far\n\n")
 
-    plot1.savefig('plot1.png')
-    plot2.savefig('plot2.png')
+    #plot1.savefig('plot1.png')
+    #plot2.savefig('plot2.png')
