@@ -17,11 +17,13 @@ def ploting_releasedate_number(dataframe_date):
 
 
 def ploting_runtime_releasedate(dataframex , dataframey):
+        
+   datax = range(0, len(dataframex))
+   datay =  range(0, len(dataframey))
     
     
-    
-    x = np.array([dataframex])
-    y = np.array([dataframey])
+    x = np.array([datax])
+    y = np.array([datay])
     
     
     
