@@ -15,7 +15,7 @@ all of which are part of the Anaconda framework.
 # Results
 
 * How many movies are rated adult?  
-	 ..9 movies are rated as adult.
+	 ...9 movies are rated as adult.
  * How many movies are listed as animation?  
 	 ..1934 movies are listed as animation. E.g. "The SpongeBob Movie: Sponge Out of Water" 
  * Which movie had the highest budget?  
