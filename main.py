@@ -1,10 +1,9 @@
-import os, filehandler, analyze
-import ploting
-from random import choice, randint
+import os, filehandler, analyze, plotting
 import pandas as pd
+from random import choice, randint
 
 # Define filename and url for the dataset
-fname = "movies_metadata.csv"
+fname = "movies.csv"
 url = "https://raw.githubusercontent.com/MikkelHansen95/dataset/master/movies_metadata.csv"
 
 # Download required files/datasets
@@ -14,9 +13,7 @@ if not os.path.isfile(fname):
 # Read the dataset and remove untitled entries
 dataframe = pd.read_csv(fname, dtype='unicode', low_memory=False)
 dataframe = dataframe[dataframe['title'].notnull()]
-dataframex = dataframe['runtime']
-datadramey = dataframe[dataframe['release_date'].notnull()]
-dataframe_date = dataframe['release_date']
+
 
 # Using 'analyze' retrieve portions of the needed data
 adult = analyze.rated_adult(dataframe)
@@ -24,9 +21,12 @@ animation = analyze.genre(dataframe,'Animation')['title']
 budget = analyze.budget(dataframe)['title']
 
 #ploting the numbers of movies from a releasedate
-plot = ploting.ploting_releasedate_number(dataframe_date)
-#ploting the runtime as x and date as y 
-plot2 = ploting.ploting_runtime_releasedate(dataframex, datadramey)
+plot1 = plotting.releasedate_number(dataframe)
+plot1 = plot1.get_figure()
+
+#ploting the runtime as x and date as y
+plot2 = plotting.runtime_releasedate(dataframe)
+plot2 = plot2.get_figure()
 
 
 # Select a random title from the budget dataframe, and reveal it's rank
@@ -72,3 +72,6 @@ if __name__ == '__main__':
 
     print("\t * Which english action movie had the biggest revenue?")
     print('\n\t\t"' + analyze.revenue(dataframe,'Action','en')['title'].iloc[-1] + '"', "has had the biggest revenue so far\n\n")
+
+    plot1.savefig('plot1.png')
+    plot2.savefig('plot2.png')
