@@ -1,9 +1,10 @@
 import os, filehandler, analyze
-import pandas as pd
+import ploting
 from random import choice, randint
+import pandas as pd
 
 # Define filename and url for the dataset
-fname = "movies.csv"
+fname = "movies_metadata.csv"
 url = "https://raw.githubusercontent.com/MikkelHansen95/dataset/master/movies_metadata.csv"
 
 # Download required files/datasets
@@ -11,13 +12,22 @@ if not os.path.isfile(fname):
     filehandler.download(url,fname)
 
 # Read the dataset and remove untitled entries
-dataframe = pd.read_csv(fname, low_memory=False)
+dataframe = pd.read_csv(fname, dtype='unicode', low_memory=False)
 dataframe = dataframe[dataframe['title'].notnull()]
+dataframex = dataframe['runtime']
+datadramey = dataframe[dataframe['release_date'].notnull()]
+dataframe_date = dataframe['release_date']
 
 # Using 'analyze' retrieve portions of the needed data
 adult = analyze.rated_adult(dataframe)
 animation = analyze.genre(dataframe,'Animation')['title']
 budget = analyze.budget(dataframe)['title']
+
+#ploting the numbers of movies from a releasedate
+plot = ploting.ploting_releasedate_number(dataframe_date)
+#ploting the runtime as x and date as y 
+plot2 = ploting.ploting_runtime_releasedate(dataframex, datadramey)
+
 
 # Select a random title from the budget dataframe, and reveal it's rank
 randbudget = randint(0, len(budget) - 1)
