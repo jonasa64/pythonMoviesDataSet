@@ -28,6 +28,7 @@ plot1 = plot1.get_figure()
 plot2 = plotting.runtime_releasedate(dataframe)
 plot2 = plot2.get_figure()
 
+#plotting Revenue, Budget and Buzzword Count as X, Y, X in 3D plot
 plot3 = plotting.three_d_plot(dataframe)
 plot3 = plot3.get_figure()
 

@@ -1,3 +1,4 @@
+import string
 import pandas as pd
 
 ''' Functions to analyze data from a dataframe structured as the 
@@ -95,9 +96,18 @@ def revenue(df, gen=None, coun=None):
 
     return result
 
+def rem_punct(str):
+    punct = string.punctuation
+    no_punct = ''
+    for char in str: #for each character in the string, check if its not a punctioation. If so - add it to the return string
+       if char not in punct:
+           no_punct += char
+
+    return(no_punct)
+
 def buzzword_count(df, top):
     buzzwords = {}
-    for overview in dataframe['overview']:
+    for overview in df['overview']:
         overview_stripped = str(overview).lower()
         overview_stripped = rem_punct(overview_stripped)
         words = overview_stripped.split()

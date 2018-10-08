@@ -8,6 +8,7 @@ import analyze
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
 
 def releasedate_number(df):
     '''
@@ -58,7 +59,7 @@ def three_d_plot(df):
     for overview in df['overview']:
         count = 0
         overview_stripped = str(overview).lower()
-        overview_stripped = rem_punct(overview_stripped)
+        overview_stripped = analyze.rem_punct(overview_stripped)
         words = overview_stripped.split()
         for word in words:
             if word in buzzwords_100:
@@ -71,6 +72,6 @@ def three_d_plot(df):
     three_d.scatter(df['revenue'], df['budget'], df['overview'])
     three_d.set_xlabel('Revenue')
     three_d.set_ylabel('Budget')
-    thre_d.set_zlabel('Buzzword count')
+    three_d.set_zlabel('Buzzword count')
 
-    return plt
+    return three_d
