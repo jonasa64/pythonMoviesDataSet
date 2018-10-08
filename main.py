@@ -28,6 +28,8 @@ plot1 = plot1.get_figure()
 plot2 = plotting.runtime_releasedate(dataframe)
 plot2 = plot2.get_figure()
 
+plot3 = plotting.three_d_plot(dataframe)
+plot3 = plot3.get_figure()
 
 # Select a random title from the budget dataframe, and reveal it's rank
 randbudget = randint(0, len(budget) - 1)
@@ -74,4 +76,5 @@ if __name__ == '__main__':
     print('\n\t\t"' + analyze.revenue(dataframe,'Action','en')['title'].iloc[-1] + '"', "has had the biggest revenue so far\n\n")
 
     #plot1.savefig('plot1.png')
+    #plot2.savefig('plot2.png')
     #plot2.savefig('plot2.png')

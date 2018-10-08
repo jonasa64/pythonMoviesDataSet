@@ -4,6 +4,7 @@ Created on Sun Oct  7 12:26:27 2018
 @author: Jonas
 """
 
+import analyze
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -49,3 +50,27 @@ def runtime_releasedate(df):
     plt.yticks(np.arange(0, max(df_y), step=35.0))
 
     return plt.scatter(df_x, df_y, 1)
+
+def three_d_plot(df):
+    buzzwords_100 = analyze.buzzword_count(df, 100)
+
+    new_overview = []
+    for overview in df['overview']:
+        count = 0
+        overview_stripped = str(overview).lower()
+        overview_stripped = rem_punct(overview_stripped)
+        words = overview_stripped.split()
+        for word in words:
+            if word in buzzwords_100:
+                count += 1
+        new_overview.append(count)
+
+    df.overview = new_overview
+
+    three_d = plt.figure().gca(projection='3d')
+    three_d.scatter(df['revenue'], df['budget'], df['overview'])
+    three_d.set_xlabel('Revenue')
+    three_d.set_ylabel('Budget')
+    thre_d.set_zlabel('Buzzword count')
+
+    return plt

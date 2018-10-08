@@ -1,3 +1,9 @@
+import pandas as pd
+
+''' Functions to analyze data from a dataframe structured as the 
+    Dataset "movies_metadata.csv" from kaggle.com
+'''
+
 def rated_adult(df):
     '''
     Count the number of occurances where adult is set to True in the dataframe, df
@@ -88,3 +94,17 @@ def revenue(df, gen=None, coun=None):
     result = result.sort_values(by=['revenue'])
 
     return result
+
+def buzzword_count(df, top):
+    buzzwords = {}
+    for overview in dataframe['overview']:
+        overview_stripped = str(overview).lower()
+        overview_stripped = rem_punct(overview_stripped)
+        words = overview_stripped.split()
+        for word in words:
+            buzzwords.setdefault(word, 0)
+            buzzwords[word] += 1
+
+    buzzwords_100 = list(reversed(sorted(buzzwords, key=buzzwords.__getitem__)))
+
+    return buzzwords_100[0:top]
